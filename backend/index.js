@@ -7,8 +7,8 @@ const notes = require("./routes/notes");
 
 connectDB();
 app.use(express.json());
-app.use("/api/auth", auth);
-app.use("/api/notes", notes);
+app.use("/auth", auth);
+app.use("/notes", notes);
 
 const port = 8080;
 app.listen(port, () => {
