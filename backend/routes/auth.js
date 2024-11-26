@@ -4,6 +4,7 @@ const router = express.Router();
 const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const fetchuser = require("../middleware/fetchuser");
 
 const JWT_SECRET = "mysecretkey";
 
@@ -53,7 +54,7 @@ router.post(
       res.json(user);
     } catch (error) {
       console.log(error);
-      res.status(500).send("Something went wrong");
+      res.status(500).send("Internal server error");
     }
   }
 );
@@ -95,12 +96,23 @@ router.post(
       const authtoken = jwt.sign(data, JWT_SECRET);
       const decoded = jwt.verify(authtoken, JWT_SECRET);
 
-      res.json(`Hello ${decoded.user.name}`);
+      res.json(authtoken);
     } catch (error) {
       console.log(error.message);
       res.status(500).send("Internal server error");
     }
   }
 );
+
+router.post("/getuser", fetchuser, async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const user = await User.findById(userId).select("-password"); //select()- password does not include
+    res.json(user);
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).send("Internal server error");
+  }
+});
 
 module.exports = router;
