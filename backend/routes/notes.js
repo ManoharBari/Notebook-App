@@ -97,4 +97,25 @@ router.put(
   }
 );
 
+// Route 4: Delete Notes using DELETE - login required
+router.delete("/deletenote/:id", fetchuser, async (req, res) => {
+  try {
+    let note = await Note.findById(req.params.id);
+    if (!note) {
+      res.status(401).send("Not Found");
+    }
+
+    // check user credentials
+    if (note.user.toString() !== req.user.id) {
+      res.status(401).send("Access Denied");
+    }
+
+    await Note.findByIdAndDelete(req.params.id);
+    res.send("Note deleted successfully");
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).send("Internal server error");
+  }
+});
+
 module.exports = router;
