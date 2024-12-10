@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import NoteContext from '../context/notes/noteContext'
 
 function Addnotes() {
-    const { addNote, updateNote, deleteNote } = useContext(NoteContext)
+    const { addNote } = useContext(NoteContext)
     const [note, setNote] = useState({ title: "", description: "", tag: "" })
 
     const handleChange = (e) => {
