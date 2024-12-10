@@ -20,8 +20,8 @@ router.post(
   "/createnote",
   fetchuser,
   [
-    body("title", "Enter valid title").isLength({ min: 3 }),
-    body("description", "Enter valid description").isLength({ min: 5 }),
+    body("title", "Enter valid title").exists(),
+    body("description", "Enter valid description").exists(),
   ],
   async (req, res) => {
     const error = validationResult(req);
