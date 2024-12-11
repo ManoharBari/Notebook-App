@@ -19,15 +19,15 @@ function Addnotes() {
                 <div className="mb-3 my-4">
                     <h3>Add Notes</h3>
                     <label htmlFor="Title" className="form-label">Title</label>
-                    <input type="text" className="form-control" name='title' id="Title" onChange={handleChange} />
+                    <input type="text" className="form-control" name='title' id="Title" onChange={handleChange} required />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="Description" className="form-label">Description</label>
-                    <input type="text" className="form-control" name='description' id="Description" onChange={handleChange} />
+                    <input type="text" className="form-control" name='description' id="Description" onChange={handleChange} required />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="Label" className="form-label">Tag</label>
-                    <input type="text" className="form-control" name='tag' id="Label" onChange={handleChange} />
+                    <input type="text" className="form-control" name='tag' id="Label" onChange={handleChange} required />
                 </div>
 
                 <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Submit</button>

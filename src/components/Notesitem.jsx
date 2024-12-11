@@ -3,7 +3,7 @@ import { Pencil, Trash2 } from "lucide-react"
 import NoteContext from "../context/notes/noteContext"
 import "../App.css"
 
-function Notesitem({ note }) {
+function Notesitem({ note, editNote }) {
     const { deleteNote } = useContext(NoteContext)
     return (
         <div className="card m-1 col-md-3">
@@ -11,7 +11,7 @@ function Notesitem({ note }) {
             <div className="card-body">
                 <div className="d-flex">
                     <h5 className="card-title">{note.title}</h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span> <Trash2 onClick={() => { deleteNote(note._id) }} />&nbsp;&nbsp;&nbsp;<Pencil /></span>
+                    <span> <Trash2 onClick={() => { deleteNote(note._id) }} />&nbsp;&nbsp;&nbsp;<Pencil onClick={() => { editNote(note) }} /></span>
                 </div>
                 <p className="card-text">{note.description}</p>
             </div>

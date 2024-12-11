@@ -13,7 +13,7 @@ const NoteState = (props) => {
     const response = await fetch(url, {
       method: "GET",
       headers: {
-        "Content-Type": "appliction/json",
+        "Content-Type": "application/json",
         "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjc0NDUwMjliZjQ0NjA1ODhhNzVhYmJkIiwibmFtZSI6InNoeWFtIn0sImlhdCI6MTczMjU5NzUwOX0.xIQ8sXHY4kelP8ZqQC8LPPQ_iajzYmXBBlwYEpnLIzM"
       }
     });
@@ -49,28 +49,28 @@ const NoteState = (props) => {
 
   //Update Notes
   const updateNote = async (id, title, description, tag) => {
+
     // API call
     const url = `${host}/notes/updatenote/${id}`
     const response = await fetch(url, {
       method: "PUT",
       headers: {
-        "Content-Type": "appliction/json",
+        "Content-Type": "application/json",
         "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjc0NDUwMjliZjQ0NjA1ODhhNzVhYmJkIiwibmFtZSI6InNoeWFtIn0sImlhdCI6MTczMjU5NzUwOX0.xIQ8sXHY4kelP8ZqQC8LPPQ_iajzYmXBBlwYEpnLIzM"
       },
       body: JSON.stringify({ title, description, tag }),
     });
 
     // Logic for client side 
-    notes.map((note) => {
+    let newNotes = JSON.parse(JSON.stringify(notes))
+    newNotes.map((note) => {
       if (note._id === id) {
         note.title = title
         note.description = description
         note.tag = tag
       }
     })
-    const json = await response.json();
-    console.log(json);
-
+    setNotes(newNotes)
   }
 
   // Delete Notes
@@ -83,7 +83,7 @@ const NoteState = (props) => {
     const response = await fetch(url, {
       method: "DELETE",
       headers: {
-        "Content-Type": "appliction/json",
+        "Content-Type": "application/json",
         "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjc0NDUwMjliZjQ0NjA1ODhhNzVhYmJkIiwibmFtZSI6InNoeWFtIn0sImlhdCI6MTczMjU5NzUwOX0.xIQ8sXHY4kelP8ZqQC8LPPQ_iajzYmXBBlwYEpnLIzM"
       }
     });
