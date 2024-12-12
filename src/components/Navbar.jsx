@@ -21,10 +21,13 @@ function Navbar() {
                         </li>
 
                     </ul>
-                    <form className="d-flex" role="search">
-                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button className="btn btn-outline-success" type="submit">Search</button>
+
+                    <form className="d-flex mx-5" role="search">
+                        <input className="form-control me-2 mx-3" type="search" placeholder="Search" aria-label="Search" />
+                        <button className="btn btn-outline-primary" type="submit">Search</button>
                     </form>
+                    <Link to="/login" className='btn btn-outline-primary mx-2' type='button'>Login</Link>
+                    <Link to="/signup" className='btn btn-primary' type='button'>Signup</Link>
                 </div>
             </div>
         </nav >

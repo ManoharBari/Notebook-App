@@ -62,10 +62,11 @@ router.post(
 router.post(
   "/login",
   [
-    body("email", "Login with correct credentials").isEmail(),
+    body("email", "Enter valid email").isEmail(),
     body("password", "Enter valid password").exists(),
   ],
   async (req, res) => {
+    let success = false;
     const error = validationResult(req);
     if (!error.isEmpty()) {
       return res.status(400).json({ errors: error.array() });
@@ -76,14 +77,16 @@ router.post(
       let user = await User.findOne({ email });
 
       if (!user) {
-        return res
-          .status(400)
-          .json({ errro: "Login with correct credentials" });
+        success = false;
+        return res.status(400).json({ success, errro: "User does not exist" });
       }
 
       let passwordComp = await bcrypt.compare(password, user.password);
       if (!passwordComp) {
-        return res.status(400).json({ errro: "Password does not match" });
+        success = false;
+        return res
+          .status(400)
+          .json({ success, errro: "Password does not match" });
       }
 
       const data = {
@@ -92,11 +95,10 @@ router.post(
           name: user.username,
         },
       };
-
+      success = true;
       const authtoken = jwt.sign(data, JWT_SECRET);
-      const decoded = jwt.verify(authtoken, JWT_SECRET);
-
-      res.json(authtoken);
+      res.json(success, authtoken);
+      console.log(res.json);
     } catch (error) {
       console.log(error.message);
       res.status(500).send("Internal server error");
