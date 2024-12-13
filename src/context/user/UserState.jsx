@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import UserContext from './userContext'
 import { useNavigate } from 'react-router-dom'
 import { useAlert } from '../alerts/alertContext'
@@ -7,6 +7,7 @@ function UserState({ children }) {
     const alert = useAlert()
     const host = "http://localhost:8080"
     const navigate = useNavigate()
+    const [user, setUser] = useState({})
 
     // Signup User
     const userSignup = async (name, email, password, confirmpassword) => {
@@ -63,8 +64,27 @@ function UserState({ children }) {
         }
     }
 
+    // Get User
+    const getUser = async () => {
+        try {
+            // API call
+            const url = `${host}/auth/getuser`
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "auth-token": localStorage.getItem("token")
+                }
+            });
+            const json = await response.json();
+            setUser(json)
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
+
     return (
-        <UserContext.Provider value={{ userLogin, userSignup }}>
+        <UserContext.Provider value={{ userLogin, userSignup, getUser, user }}>
             {children}
         </UserContext.Provider>
     )

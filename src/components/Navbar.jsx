@@ -1,13 +1,15 @@
 import { LogOut, User } from 'lucide-react';
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link, useLocation } from 'react-router'
 import { useNavigate } from 'react-router-dom'
 import { useAlert } from '../context/alerts/alertContext'
+import UserContext from '../context/user/userContext';
 
 function Navbar() {
     const alert = useAlert()
     const navigate = useNavigate()
     const location = useLocation();
+    const { getUser, user } = useContext(UserContext)
 
     const Logout = () => {
         alert.success("Logout Sucessfully")
@@ -32,14 +34,13 @@ function Navbar() {
 
                     </ul>
 
-                    <div class="dropdown mx-4">
-                        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <User />    
+                    <div class="dropdown dropstart mx-4">
+                        <button class="btn dropdown-toggle" onClick={() => { getUser() }} type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <User />
                         </button>
                         <ul class="dropdown-menu">
-                            <li className='dropdown-item'>name</li>
-                            <li className='dropdown-item'>email</li>
-                            <li className='dropdown-item'>login on</li>
+                            <li className='dropdown-item'>Hi, {user.username}</li>
+                            <li className='dropdown-item'>{user.email}</li>
                         </ul>
                     </div>
 
