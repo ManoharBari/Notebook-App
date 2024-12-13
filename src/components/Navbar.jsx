@@ -1,10 +1,16 @@
 import { LogOut } from 'lucide-react';
 import React from 'react'
-import { Link } from 'react-router'
-import { useLocation } from 'react-router'
+import { Link, useLocation } from 'react-router'
+import { useNavigate } from 'react-router-dom'
 
 function Navbar() {
-    let location = useLocation();
+    const navigate = useNavigate()
+    const location = useLocation();
+
+    const Logout = () => {
+        localStorage.removeItem("token")
+        navigate("/login")
+    }
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
             <div className="container-fluid">
@@ -27,7 +33,7 @@ function Navbar() {
                         <div>
                             <Link to="/login" className='btn btn-outline-primary mx-2' type='button'>Login</Link>
                             <Link to="/signup" className='btn btn-primary' type='button'>Signup</Link>
-                        </div> : <button className='btn btn-primary'><LogOut size={20} /> Logout</button>}
+                        </div> : <button onClick={Logout} className='btn btn-primary'><LogOut size={20} /> Logout</button>}
 
                 </div>
             </div>
