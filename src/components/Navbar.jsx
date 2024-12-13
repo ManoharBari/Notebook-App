@@ -1,20 +1,23 @@
-import { LogOut } from 'lucide-react';
+import { LogOut, User } from 'lucide-react';
 import React from 'react'
 import { Link, useLocation } from 'react-router'
 import { useNavigate } from 'react-router-dom'
+import { useAlert } from '../context/alerts/alertContext'
 
 function Navbar() {
+    const alert = useAlert()
     const navigate = useNavigate()
     const location = useLocation();
 
     const Logout = () => {
+        alert.success("Logout Sucessfully")
         localStorage.removeItem("token")
         navigate("/login")
     }
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
             <div className="container-fluid">
-                <Link className="navbar-brand" to="#">NoteDown</Link>
+                <Link className="navbar-brand" to="/">NoteDown</Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
@@ -28,6 +31,17 @@ function Navbar() {
                         </li>
 
                     </ul>
+
+                    <div class="dropdown mx-4">
+                        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <User />    
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li className='dropdown-item'>name</li>
+                            <li className='dropdown-item'>email</li>
+                            <li className='dropdown-item'>login on</li>
+                        </ul>
+                    </div>
 
                     {!localStorage.getItem("token") ?
                         <div>

@@ -5,8 +5,6 @@ const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const fetchuser = require("../middleware/fetchuser");
-const { redirect } = require("react-router");
-
 const JWT_SECRET = "mysecretkey";
 
 // create user using : POST = api/user - No login required
@@ -42,6 +40,7 @@ router.post(
       const data = {
         user: {
           id: user.id,
+          name: user.username,
         },
       };
 
