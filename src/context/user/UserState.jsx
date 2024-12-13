@@ -27,7 +27,7 @@ function UserState({ children }) {
                 alert.error("password and confirm must be same")
             } else {
                 alert.success(json.msg)
-                localStorage.setItem("newtoken", json.authtoken)
+                localStorage.setItem("token", json.authtoken)
                 navigate('/');
             }
         } catch (error) {

@@ -1,3 +1,4 @@
+import { LogOut } from 'lucide-react';
 import React from 'react'
 import { Link } from 'react-router'
 import { useLocation } from 'react-router'
@@ -22,12 +23,12 @@ function Navbar() {
 
                     </ul>
 
-                    <form className="d-flex mx-5" role="search">
-                        <input className="form-control me-2 mx-3" type="search" placeholder="Search" aria-label="Search" />
-                        <button className="btn btn-outline-primary" type="submit">Search</button>
-                    </form>
-                    <Link to="/login" className='btn btn-outline-primary mx-2' type='button'>Login</Link>
-                    <Link to="/signup" className='btn btn-primary' type='button'>Signup</Link>
+                    {!localStorage.getItem("token") ?
+                        <div>
+                            <Link to="/login" className='btn btn-outline-primary mx-2' type='button'>Login</Link>
+                            <Link to="/signup" className='btn btn-primary' type='button'>Signup</Link>
+                        </div> : <button className='btn btn-primary'><LogOut size={20} /> Logout</button>}
+
                 </div>
             </div>
         </nav >

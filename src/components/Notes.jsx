@@ -2,15 +2,22 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import Notesitem from './Notesitem'
 import NoteContext from '../context/notes/noteContext';
 import { useAlert } from '../context/alerts/alertContext'
+import { useNavigate } from 'react-router-dom'
 
 function Notes() {
+    const navigate = useNavigate()
     const alert = useAlert()
     const { notes, fetchAllNote, updateNote } = useContext(NoteContext);
     const refOpen = useRef(null)
     const refClose = useRef(null)
 
     useEffect(() => {
-        fetchAllNote()
+        if (localStorage.getItem("token")) {
+            fetchAllNote()
+        } else {
+            navigate("/login")
+        }
+
     }, [])
 
     const [note, setNote] = useState({ id: "", etitle: "", edescription: "", etag: "" })
