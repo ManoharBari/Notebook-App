@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import Notesitem from './Notesitem'
 import NoteContext from '../context/notes/noteContext';
+import { useAlert } from '../context/alerts/alertContext'
 
 function Notes() {
-    const context = useContext(NoteContext);
-    const { notes, fetchAllNote, updateNote } = context;
+    const alert = useAlert()
+    const { notes, fetchAllNote, updateNote } = useContext(NoteContext);
     const refOpen = useRef(null)
     const refClose = useRef(null)
 
@@ -21,6 +22,7 @@ function Notes() {
     const handleSubmit = () => {
         updateNote(note.id, note.etitle, note.edescription, note.etag)
         refClose.current.click()
+        alert.success("Note Updated Successfully!")
     }
 
     const editNote = (currenNote) => {

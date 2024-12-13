@@ -1,7 +1,10 @@
 import { useState } from "react";
 import NoteContext from "./noteContext";
+import React from "react";
+import { useAlert } from '../alerts/alertContext'
 
-const NoteState = (props) => {
+const NoteState = ({ children }) => {
+  const alert = useAlert()
   const host = "http://localhost:8080"
   const intialNotes = []
   const [notes, setNotes] = useState(intialNotes);
@@ -68,6 +71,7 @@ const NoteState = (props) => {
   // Delete Notes
   const deleteNote = async (id) => {
     // client side logic
+    alert.success("Note Deleted Successfully!")
     setNotes(notes.filter((note) => note._id !== id))
 
     // API call
@@ -85,7 +89,7 @@ const NoteState = (props) => {
 
   return (
     <NoteContext.Provider value={{ notes, setNotes, fetchAllNote, addNote, updateNote, deleteNote }}>
-      {props.children}
+      {children}
     </NoteContext.Provider>
   );
 };

@@ -5,12 +5,13 @@ const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const fetchuser = require("../middleware/fetchuser");
+const { redirect } = require("react-router");
 
 const JWT_SECRET = "mysecretkey";
 
 // create user using : POST = api/user - No login required
 router.post(
-  "/",
+  "/signup",
   [
     body("name", "Enter valid name").isLength({ min: 3 }),
     body("email", "Enter valid email").isEmail(),
@@ -25,7 +26,7 @@ router.post(
     try {
       let user = await User.findOne({ email: req.body.email });
       if (user) {
-        return res.status(400).json({ errro: "User already exits" });
+        return res.status(400).json({ msg: "User already exits" });
       }
 
       const salt = await bcrypt.genSalt(10);
@@ -48,10 +49,10 @@ router.post(
       const authtoken = jwt.sign(data, JWT_SECRET);
 
       // verify a token and decode - synchronous
-      const decoded = jwt.verify(authtoken, JWT_SECRET);
-      console.log(decoded.user);
+      // const decoded = jwt.verify(authtoken, JWT_SECRET);
+      // console.log(decoded.user);
 
-      res.json(user);
+      res.status(200).json({ msg: "Account created successfully", authtoken });
     } catch (error) {
       console.log(error);
       res.status(500).send("Internal server error");
@@ -66,10 +67,10 @@ router.post(
     body("password", "Enter valid password").exists(),
   ],
   async (req, res) => {
-    let success = false;
+    let success = "false";
     const error = validationResult(req);
     if (!error.isEmpty()) {
-      return res.status(400).json({ errors: error.array() });
+      return res.status(400).json({ error: error.array() });
     }
 
     try {
@@ -77,16 +78,16 @@ router.post(
       let user = await User.findOne({ email });
 
       if (!user) {
-        success = false;
-        return res.status(400).json({ success, errro: "User does not exist" });
+        success = "false";
+        return res.status(400).json({ success, msg: "User does not exist" });
       }
 
       let passwordComp = await bcrypt.compare(password, user.password);
       if (!passwordComp) {
-        success = false;
+        success = "false";
         return res
           .status(400)
-          .json({ success, errro: "Password does not match" });
+          .json({ success, msg: "Password does not match" });
       }
 
       const data = {
@@ -95,13 +96,11 @@ router.post(
           name: user.username,
         },
       };
-      success = true;
       const authtoken = jwt.sign(data, JWT_SECRET);
-      res.json(success, authtoken);
-      console.log(res.json);
+      res.json({ success: "true", authtoken });
     } catch (error) {
       console.log(error.message);
-      res.status(500).send("Internal server error");
+      res.status(500).json({ msg: "Internal server error" });
     }
   }
 );
@@ -113,7 +112,7 @@ router.post("/getuser", fetchuser, async (req, res) => {
     res.json(user);
   } catch (error) {
     console.log(error.message);
-    res.status(500).send("Internal server error");
+    res.status(500).json({ msg: "Internal server error" });
   }
 });
 
