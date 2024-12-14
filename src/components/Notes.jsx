@@ -50,17 +50,34 @@ function Notes() {
                         </div>
                         <div className="modal-body">
                             <form>
-                                <div className="mb-3 my-4">
-                                    <label htmlFor="Title" className="form-label">Title</label>
-                                    <input type="text" className="form-control" value={note.etitle} name='etitle' id="Title" onChange={handleChange} required />
-                                </div>
-                                <div className="mb-3">
-                                    <label htmlFor="Description" className="form-label">Description</label>
-                                    <input type="text" className="form-control" value={note.edescription} name='edescription' id="Description" onChange={handleChange} required />
-                                </div>
-                                <div className="mb-3">
-                                    <label htmlFor="Label" className="form-label">Tag</label>
-                                    <input type="text" className="form-control" value={note.etag} name='etag' id="Label" onChange={handleChange} required />
+                                <div className="editor">
+                                    <input
+                                        type="text"
+                                        placeholder="Note Title"
+                                        className="titleInput"
+                                        name='etitle'
+                                        value={note.etitle}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                    <textarea
+                                        placeholder="Start typing your note here..."
+                                        className="contentInput"
+                                        name='edescription'
+                                        value={note.edescription}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                    <div className="tagsSection">
+                                        <input
+                                            type="text"
+                                            placeholder="Add a tag"
+                                            className="tagInput"
+                                            name='etag'
+                                            value={note.etag}
+                                            onChange={handleChange}
+                                        />
+                                    </div>
                                 </div>
                             </form>
                         </div>
@@ -71,12 +88,21 @@ function Notes() {
                     </div>
                 </div>
             </div>
-            <div className="row notes my-5">
-                <h3>My Notes</h3>
-                {notes.map((note, index) => {
-                    return <Notesitem note={note} editNote={editNote} key={index} />
-                })}
-            </div>
+
+            <aside className="sidebar">
+                <div className="header">
+                    <h2 className="heading">Your Notes</h2>
+                </div>
+                {notes.length === 0 && <div className="error">
+                    No Notes Available
+                </div>}
+                <div className="notesList">
+                    {notes.map((note, index) => {
+                        return <Notesitem note={note} editNote={editNote} key={index} />
+                    }
+                    )}
+                </div>
+            </aside>
         </>
     )
 }

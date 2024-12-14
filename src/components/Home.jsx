@@ -6,9 +6,9 @@ function Home() {
 
     return (
         <>
-            <div className="container">
-                <Addnotes />
+            <div style={{ display: "flex" }}>
                 <Notes />
+                <Addnotes />
             </div>
         </>
     )

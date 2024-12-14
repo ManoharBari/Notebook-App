@@ -1,20 +1,31 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Pencil, Trash2 } from "lucide-react"
 import NoteContext from "../context/notes/noteContext"
+import "../styles/Notes.css"
 
 function Notesitem({ note, editNote }) {
     const { deleteNote } = useContext(NoteContext)
     return (
-        <div className="card m-1 col-md-3">
-            <div className="card-header">{note.tag}</div>
-            <div className="card-body">
-                <div className="d-flex">
-                    <h5 className="card-title">{note.title}</h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span> <Trash2 onClick={() => { deleteNote(note._id) }} />&nbsp;&nbsp;&nbsp;<Pencil onClick={() => { editNote(note) }} /></span>
+        <>
+            <div className="noteItem">
+                <div className="noteContent">
+                    <div className="title">
+                        <h3 className="noteTitle">{note.title}</h3>
+                        <div className="action">
+                            <span className='editbtn' onClick={() => { editNote(note) }}> <Pencil size={16}  /> </span>
+                            <span className='delbtn' onClick={() => { deleteNote(note._id) }}> <Trash2 size={16} /> </span>
+                        </div>
+                    </div>
+                    <p className="notePreview">{note.description}</p>
+                    <div className="noteMeta">
+                        <div className="tags">
+                            <span className="tag">{note.tag}</span>
+                        </div>
+                        <time className="timestamp">{`Created At ${note.date.slice(0, 10)}, ${note.date.slice(11, 19)}`}</time>
+                    </div>
                 </div>
-                <p className="card-text">{note.description}</p>
             </div>
-        </div>
+        </>
     )
 }
 

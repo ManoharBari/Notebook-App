@@ -50,8 +50,7 @@
   justify-content: space-between;
 }
 
-.saveButton,
-.deleteButton {
+.saveButton {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -66,10 +65,5 @@
 
 .saveButton {
   background-color: rgb(45, 45, 45);
-  color: white;
-}
-
-.deleteButton {
-  background-color: #c80025;
   color: white;
 }
