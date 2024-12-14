@@ -9,6 +9,8 @@
 
 .icon{
     display: flex;
+    cursor: pointer;
+    width: 2.5rem;
     border: 1px solid rgba(0, 0, 0, 0.185);
     padding: 10px;
     border-radius: 10px;

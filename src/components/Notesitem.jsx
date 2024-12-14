@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import { Pencil, Trash2 } from "lucide-react"
 import NoteContext from "../context/notes/noteContext"
-import "../App.css"
 
 function Notesitem({ note, editNote }) {
     const { deleteNote } = useContext(NoteContext)

@@ -1,15 +1,14 @@
-import { LogOut, Moon, User } from 'lucide-react';
+import { LogOut } from 'lucide-react';
 import React, { useContext, useEffect } from 'react'
-import { Link, useLocation } from 'react-router'
+import { Link } from 'react-router'
 import { useNavigate } from 'react-router-dom'
 import { useAlert } from '../context/alerts/alertContext'
 import UserContext from '../context/user/userContext';
-import './navbar.css';
+import '../styles/navbar.css';
 
 function Navbar() {
     const alert = useAlert()
     const navigate = useNavigate()
-    const location = useLocation();
     const { getUser, user } = useContext(UserContext)
 
     const Logout = () => {
@@ -38,9 +37,6 @@ function Navbar() {
 
                         <div>Hi, {user.username}</div>
 
-                        <div className="icon theme mx-4">
-                            <Moon size={16} />
-                        </div>
                         {!localStorage.getItem("token") ?
                             <div>
                                 <Link to="/login" className='btn btn-outline-primary mx-2' type='button'>Login</Link>
