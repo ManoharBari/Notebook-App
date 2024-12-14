@@ -3,6 +3,7 @@ import Notesitem from './Notesitem'
 import NoteContext from '../context/notes/noteContext';
 import { useAlert } from '../context/alerts/alertContext'
 import { useNavigate } from 'react-router-dom'
+import "../styles/Addnotes.css"
 
 function Notes() {
     const navigate = useNavigate()
@@ -50,7 +51,7 @@ function Notes() {
                         </div>
                         <div className="modal-body">
                             <form>
-                                <div className="editor">
+                                <div className="update-editor">
                                     <input
                                         type="text"
                                         placeholder="Note Title"
@@ -82,8 +83,8 @@ function Notes() {
                             </form>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" ref={refClose} className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" onClick={handleSubmit} className="btn btn-primary">Save changes</button>
+                            <button type="button" ref={refClose} className="btn action-btn upbtn-close" data-bs-dismiss="modal">Close</button>
+                            <button type="button" onClick={handleSubmit} className="btn action-btn upbtn-save">Save changes</button>
                         </div>
                     </div>
                 </div>
@@ -94,7 +95,7 @@ function Notes() {
                     <h2 className="heading">Your Notes</h2>
                 </div>
                 {notes.length === 0 && <div className="error">
-                    No Notes Available
+                   Nothing to display
                 </div>}
                 <div className="notesList">
                     {notes.map((note, index) => {

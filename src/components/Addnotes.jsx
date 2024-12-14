@@ -1,8 +1,9 @@
 import React, { useContext, useState } from 'react'
 import NoteContext from '../context/notes/noteContext'
 import { useAlert } from '../context/alerts/alertContext'
-import { Plus, Save, Trash2 } from 'lucide-react'
+import { Save } from 'lucide-react'
 import "../styles/Addnotes.css"
+
 function Addnotes() {
     const { addNote } = useContext(NoteContext)
     const alert = useAlert()
