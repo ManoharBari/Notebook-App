@@ -20,7 +20,7 @@ function signUp() {
     return (
         <div className="contain">
             <div className="formWrapper">
-                <h1 className="title">Register for Note Down</h1>
+                <h1 className="title">Register for Notebook</h1>
                 <form onSubmit={handleSubmit} className="form">
                     <div className="inputGroup">
                         <input

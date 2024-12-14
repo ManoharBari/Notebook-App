@@ -21,7 +21,7 @@ function Login() {
     <>
       <div className="contain">
         <div className="formWrapper">
-          <h1 className="title">Continue to Note Down</h1>
+          <h1 className="title">Continue to Notebook</h1>
           <form onSubmit={handleSubmit} className="form">
             <div className="inputGroup">
               <input
