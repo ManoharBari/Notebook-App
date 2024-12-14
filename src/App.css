@@ -1,3 +1,7 @@
+* {
+  font-family: "Inter";
+}
+
 .d-flex span {
   cursor: pointer;
 }
