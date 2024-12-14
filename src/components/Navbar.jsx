@@ -41,8 +41,8 @@ function Navbar() {
 
                         {!localStorage.getItem("token") ?
                             <div>
-                                <Link to="/login" className='btn loginbtn mx-2' type='button'>Login</Link>
-                                <Link to="/signup" className='btn signupbtn' type='button'>Signup</Link>
+                                <Link to="/login" className='loginbtn mx-2' type='button'>Login</Link>
+                                <Link to="/signup" className='signupbtn' type='button'>Signup</Link>
                             </div> : <button onClick={Logout} className='btn'>
                                 <div className="icon"><LogOut size={16} /></div></button>}
                     </div>

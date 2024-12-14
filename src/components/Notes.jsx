@@ -83,8 +83,8 @@ function Notes() {
                             </form>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" ref={refClose} className="btn action-btn upbtn-close" data-bs-dismiss="modal">Close</button>
-                            <button type="button" onClick={handleSubmit} className="btn action-btn upbtn-save">Save changes</button>
+                            <button type="button" ref={refClose} className="action-btn upbtn-close" data-bs-dismiss="modal">Close</button>
+                            <button type="button" onClick={handleSubmit} className="action-btn upbtn-save">Save changes</button>
                         </div>
                     </div>
                 </div>

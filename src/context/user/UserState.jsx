@@ -25,11 +25,16 @@ function UserState({ children }) {
             console.log(json)
             // store auth token and redirect
             if (password !== confirmpassword) {
-                alert.error("password and confirm must be same")
+                alert.error("Password and confirm password must be same")
             } else {
-                alert.success(json.msg)
-                localStorage.setItem("token", json.authtoken)
-                navigate('/');
+                if (json.authtoken) {
+                    alert.success(json.msg)
+                    localStorage.setItem("token", json.authtoken)
+                    navigate('/');
+                } else {
+                    alert.info(json.msg)
+                    navigate("/login")
+                }
             }
         } catch (error) {
             console.log(error.message)

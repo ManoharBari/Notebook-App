@@ -9,7 +9,7 @@ function Notesitem({ note, editNote }) {
         <>
             <div className="noteItem">
                 <div className="noteContent">
-                    <div className="title">
+                    <div className="note-title">
                         <h3 className="noteTitle">{note.title}</h3>
                         <div className="action">
                             <span className='editbtn' onClick={() => { editNote(note) }}> <Pencil size={16}  /> </span>

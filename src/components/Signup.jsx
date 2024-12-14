@@ -1,5 +1,8 @@
 import React, { useContext, useState } from 'react'
 import UserContext from '../context/user/userContext'
+import { UserPlus } from 'lucide-react'
+import { Link } from 'react-router'
+import "../styles/login.css"
 
 function signUp() {
     const { userSignup } = useContext(UserContext)
@@ -15,27 +18,64 @@ function signUp() {
         setUser({ name: "", email: "", password: "", confirmpassword: "" })
     }
     return (
-        <div className="container my-5">
-            <form onSubmit={handleSubmit}>
-                <div className="mb-3">
-                    <label htmlFor="name" className="form-label">Name</label>
-                    <input type="text" className="form-control" name='name' value={user.name} id="name" onChange={handleChange} required />
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="email" className="form-label">Email</label>
-                    <input type="email" className="form-control" name='email' value={user.email} id="email" aria-describedby="emailHelp" onChange={handleChange} required />
-                    <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="password" className="form-label">Password</label>
-                    <input type="password" className="form-control" name='password' value={user.password} id="password" onChange={handleChange} required />
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="confirmpassword" className="form-label">Confirm Password</label>
-                    <input type="text" className="form-control" name='confirmpassword' value={user.confirmpassword} id="confirmpassword" onChange={handleChange} required />
-                </div>
-                <button type="submit" className="btn btn-primary">Signup</button>
-            </form>
+        <div className="contain">
+            <div className="formWrapper">
+                <h1 className="title">Register for Note Down</h1>
+                <form onSubmit={handleSubmit} className="form">
+                    <div className="inputGroup">
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Full Name"
+                            value={user.name}
+                            onChange={handleChange}
+                            className="input"
+                            required
+                        />
+                    </div>
+                    <div className="inputGroup">
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Email"
+                            value={user.email}
+                            onChange={handleChange}
+                            className="input"
+                            required
+                        />
+                    </div>
+                    <div className="inputGroup">
+                        <input
+                            type="password"
+                            name="password"
+                            placeholder="Password"
+                            value={user.password}
+                            onChange={handleChange}
+                            className="input"
+                            required
+                        />
+                    </div>
+                    <div className="inputGroup">
+                        <input
+                            type="password"
+                            name="confirmpassword"
+                            placeholder="Confirm Password"
+                            value={user.confirmpassword}
+                            onChange={handleChange}
+                            className="input"
+                            required
+                        />
+                    </div>
+            
+                    <button type="submit" className="button">
+                        <UserPlus size={16} />
+                        <span>Sign Up</span>
+                    </button>
+                </form>
+                <p className="switchPrompt">
+                    Already have an account? <Link to="/login" className="switchLink">Log in</Link>
+                </p>
+            </div>
         </div>
     )
 }

@@ -21,7 +21,7 @@ function Login() {
     <>
       <div className="contain">
         <div className="formWrapper">
-          <h1 className="title">Login to Note Down</h1>
+          <h1 className="title">Continue to Note Down</h1>
           <form onSubmit={handleSubmit} className="form">
             <div className="inputGroup">
               <input
@@ -46,8 +46,8 @@ function Login() {
               />
             </div>
             <button type="submit" className="button">
+              <LogIn size={16} />
               <span>Login</span>
-              <LogIn className="icon" size={20} />
             </button>
           </form>
           <p className="switchPrompt">
