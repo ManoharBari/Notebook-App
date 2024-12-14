@@ -1,7 +1,8 @@
 import React, { useContext, useState } from 'react'
 import NoteContext from '../context/notes/noteContext'
 import { useAlert } from '../context/alerts/alertContext'
-
+import { Plus, Save, Trash2 } from 'lucide-react'
+import "../styles/Addnotes.css"
 function Addnotes() {
     const { addNote } = useContext(NoteContext)
     const alert = useAlert()
@@ -22,21 +23,41 @@ function Addnotes() {
         <>
             <div className="container">
                 <form onSubmit={handleSubmit}>
-                    <div className="mb-3 my-4">
-                        <h3>Add Notes</h3>
-                        <label htmlFor="Title" className="form-label">Title</label>
-                        <input type="text" className="form-control" name='title' value={note.title} id="Title" onChange={handleChange} required />
+                    <div className="editor">
+                        <input
+                            type="text"
+                            placeholder="Note Title"
+                            className="titleInput"
+                            name='title'
+                            value={note.title}
+                            onChange={handleChange}
+                            required
+                        />
+                        <textarea
+                            placeholder="Start typing your note here..."
+                            className="contentInput"
+                            name='description'
+                            value={note.description}
+                            onChange={handleChange}
+                            required
+                        />
+                        <div className="tagsSection">
+                            <input
+                                type="text"
+                                placeholder="Add a tag"
+                                className="tagInput"
+                                name='tag'
+                                value={note.tag}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className="actions">
+                            <button className="saveButton" type="submit">
+                                <Save size={16} />
+                                Save
+                            </button>
+                        </div>
                     </div>
-                    <div className="mb-3">
-                        <label htmlFor="Description" className="form-label">Description</label>
-                        <input type="text" className="form-control" name='description' value={note.description} id="Description" onChange={handleChange} required />
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="Label" className="form-label">Tag</label>
-                        <input type="text" className="form-control" name='tag' value={note.tag} id="Label" onChange={handleChange} required />
-                    </div>
-
-                    <button type="submit" className="btn btn-primary">Add</button>
                 </form>
             </div>
         </>

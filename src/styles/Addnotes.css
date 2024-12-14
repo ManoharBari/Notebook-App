@@ -1,0 +1,75 @@
+.editor {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: calc(100vh - 64px);
+}
+
+.titleInput {
+  font-size: 1.5rem;
+  padding: 0.4rem 1rem;
+  background-color: transparent;
+  border: 1px solid rgba(37, 37, 37, 0.237);
+  border-radius: 8px;
+  color: black;
+  font-weight: 700;
+  width: 100%;
+}
+
+.contentInput {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  border: 1px solid rgba(37, 37, 37, 0.237);
+  border-radius: 8px;
+  color: black;
+  font-size: 1rem;
+  resize: none;
+  font-family: inherit;
+}
+
+.tagsSection {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.tagInput {
+  padding: 0.5rem 1rem;
+  width: 100%;
+  border: 1px solid rgba(37, 37, 37, 0.237);
+  border-radius: 8px;
+  color: black;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.saveButton,
+.deleteButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  width: 7rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.saveButton {
+  background-color: rgb(45, 45, 45);
+  color: white;
+}
+
+.deleteButton {
+  background-color: #c80025;
+  color: white;
+}
