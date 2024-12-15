@@ -13,7 +13,7 @@ function UserState({ children }) {
     const userSignup = async (name, email, password, confirmpassword) => {
         try {
             // API call
-            const url = `${host}/auth/signup`
+            const url = `${host}/signup`
             const response = await fetch(url, {
                 method: "POST",
                 headers: {
@@ -44,7 +44,7 @@ function UserState({ children }) {
     const userLogin = async (email, password) => {
         try {
             // API call
-            const url = `${host}/auth/login`
+            const url = `${host}/login`
             const response = await fetch(url, {
                 method: "POST",
                 headers: {
@@ -71,7 +71,7 @@ function UserState({ children }) {
     const getUser = async () => {
         try {
             // API call
-            const url = `${host}/auth/getuser`
+            const url = `${host}/getuser`
             const response = await fetch(url, {
                 method: "POST",
                 headers: {
