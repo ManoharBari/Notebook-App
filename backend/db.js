@@ -8,6 +8,7 @@ main()
 
 async function main() {
   await mongoose.connect(process.env.MONGODB_URI, {
+    // use 2 lines for vercel deploy
     useUnifiedTopology: true,
     useNewUrlParser: true,
   });
