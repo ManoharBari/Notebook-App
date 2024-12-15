@@ -12,7 +12,7 @@ const NoteState = ({ children }) => {
   // Fetch All Notes
   const fetchAllNote = async () => {
     // API call
-    const url = `${host}/fetchallnotes`
+    const url = `${host}/notes/fetchallnotes`
     const response = await fetch(url, {
       method: "GET",
       headers: {
@@ -27,7 +27,7 @@ const NoteState = ({ children }) => {
   // Add Notes
   const addNote = async (title, description, tag) => {
     // API call
-    const url = `${host}/createnote`
+    const url = `${host}/notes/createnote`
     const response = await fetch(url, {
       method: "POST",
       headers: {
@@ -46,7 +46,7 @@ const NoteState = ({ children }) => {
   const updateNote = async (id, title, description, tag) => {
 
     // API call
-    const url = `${host}/updatenote/${id}`
+    const url = `${host}/notes/updatenote/${id}`
     const response = await fetch(url, {
       method: "PUT",
       headers: {
@@ -75,7 +75,7 @@ const NoteState = ({ children }) => {
     setNotes(notes.filter((note) => note._id !== id))
 
     // API call
-    const url = `${host}/deletenote/${id}`
+    const url = `${host}/notes/deletenote/${id}`
     const response = await fetch(url, {
       method: "DELETE",
       headers: {

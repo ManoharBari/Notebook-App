@@ -17,7 +17,8 @@ app.use(
 );
 app.options("*", cors());
 app.use(express.json());
-app.use("/", auth, notes);
+app.use("/auth", auth);
+app.use("/notes", notes);
 
 //listen function
 app.listen(process.env.PORT, () => {});
