@@ -8,11 +8,10 @@ const notes = require("./routes/notes");
 
 connectDB();
 
-app.use(cors());
+app.use(cors({ origin: "*" }));
 app.use(express.json());
 app.use("/auth", auth);
 app.use("/notes", notes);
 
 //listen function
-app.listen(process.env.PORT, () => {
-});
+app.listen(process.env.PORT, () => {});
