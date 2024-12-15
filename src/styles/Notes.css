@@ -51,16 +51,29 @@
   align-items: center;
 }
 
+.action {
+  position: relative;
+}
+
 .editbtn,
 .delbtn {
   cursor: pointer;
   border: 1px solid rgba(0, 0, 0, 0.185);
-  padding: 10px;
-  margin-right: 10px;
   border-radius: 10px;
 }
 
+.editbtn {
+  padding: 10px;
+  position: relative;
+  right: 50px;
+  top: 8px;
+}
+
 .delbtn {
+  padding: 7px 10px;
+  right: 0px;
+  top: 0px;
+  position: absolute;
   background-color: #e71e43;
   color: white;
 }

@@ -6,7 +6,7 @@ function Home() {
 
     return (
         <>
-            <div style={{ display: "flex" }}>
+            <div className='home'>
                 <Notes />
                 <Addnotes />
             </div>

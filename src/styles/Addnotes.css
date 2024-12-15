@@ -1,3 +1,7 @@
+.home {
+  display: flex;
+}
+
 .editor {
   flex: 1;
   padding: 2rem;
@@ -23,17 +27,16 @@
   font-weight: 600;
 }
 
-.upbtn-close{
+.upbtn-close {
   width: 5rem;
   color: black;
   background-color: rgb(239, 239, 239);
 }
 
-.upbtn-save{
+.upbtn-save {
   width: 9rem;
   color: white;
   background-color: rgb(38, 38, 38);
-
 }
 
 .titleInput {
@@ -95,4 +98,10 @@
 .saveButton {
   background-color: rgb(19, 19, 19);
   color: white;
+}
+
+@media (max-width: 480px) {
+  .home {
+    display: block;
+  }
 }
