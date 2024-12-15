@@ -8,7 +8,13 @@ const notes = require("./routes/notes");
 
 connectDB();
 
-app.use(cors({ origin: "*" }));
+app.use(
+  cors({
+    origin: "https://notebook-app-gules.vercel.app",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use("/auth", auth);
 app.use("/notes", notes);
