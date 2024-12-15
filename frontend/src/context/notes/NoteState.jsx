@@ -5,7 +5,7 @@ import { useAlert } from '../alerts/alertContext'
 
 const NoteState = ({ children }) => {
   const alert = useAlert()
-  const host = "http://localhost:8080"
+  const host = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}`
   const intialNotes = []
   const [notes, setNotes] = useState(intialNotes);
 
