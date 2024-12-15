@@ -20,5 +20,9 @@ app.use(express.json());
 app.use("/auth", auth);
 app.use("/notes", notes);
 
+app.get("/", (req, res) => {
+  res.send("I am Working");
+});
+
 //listen function
 app.listen(process.env.PORT, () => {});
