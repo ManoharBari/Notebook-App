@@ -83,8 +83,6 @@ const NoteState = ({ children }) => {
         "auth-token": localStorage.getItem("token")
       }
     });
-    const json = await response.json()
-    console.log(json)
   }
 
   return (

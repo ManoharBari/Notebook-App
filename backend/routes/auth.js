@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const User = require("../models/user");
 const router = express.Router();
@@ -5,7 +6,7 @@ const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const fetchuser = require("../middleware/fetchuser");
-const JWT_SECRET = "mysecretkey";
+
 
 // create user using : POST = api/user - No login required
 router.post(
@@ -45,11 +46,7 @@ router.post(
       };
 
       // generating JWT token for user
-      const authtoken = jwt.sign(data, JWT_SECRET);
-
-      // verify a token and decode - synchronous
-      // const decoded = jwt.verify(authtoken, JWT_SECRET);
-      // console.log(decoded.user);
+      const authtoken = jwt.sign(data, process.env.JWT_SECRET);
 
       res.status(200).json({ msg: "Account created successfully", authtoken });
     } catch (error) {
@@ -93,7 +90,7 @@ router.post(
           name: user.username,
         },
       };
-      const authtoken = jwt.sign(data, JWT_SECRET);
+      const authtoken = jwt.sign(data, process.env.JWT_SECRET);
       res.json({ success: "true", authtoken });
     } catch (error) {
       console.log(error.message);

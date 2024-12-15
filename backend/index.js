@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const connectDB = require("./db");
@@ -12,7 +13,5 @@ app.use(express.json());
 app.use("/auth", auth);
 app.use("/notes", notes);
 
-const port = 8080;
-app.listen(port, () => {
-  console.log(`app listen on port ${port}`);
+app.listen(process.env.PORT, () => {
 });

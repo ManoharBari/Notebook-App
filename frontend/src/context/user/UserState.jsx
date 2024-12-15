@@ -22,7 +22,6 @@ function UserState({ children }) {
                 body: JSON.stringify({ name, email, password }),
             });
             const json = await response.json();
-            console.log(json)
             // store auth token and redirect
             if (password !== confirmpassword) {
                 alert.error("Password and confirm password must be same")
@@ -54,7 +53,6 @@ function UserState({ children }) {
                 body: JSON.stringify({ email, password }),
             });
             const json = await response.json();
-            console.log(json)
             if (json.success !== "true") {
                 alert.error(json.msg)
 
