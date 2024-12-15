@@ -11,6 +11,7 @@
       "headers": [{ "Access-Control-Allow-Origin": "*" }]
     }
   ],
+  
   "headers": [
     {
       "source": "/(.*)",
