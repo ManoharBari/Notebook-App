@@ -18,7 +18,13 @@
   ],
   "functions": {
     "routes/*.js": {
-      "maxDuration": 15
+      "maxDuration": 5
     }
-  }
+  },
+  "headers": [
+    {
+      "source": "/https://notebook-app-gules.vercel.app/(.*)",
+      "headers": [{ "key": "Access-Control-Allow-Origin", "value": "*" }]
+    }
+  ]
 }
