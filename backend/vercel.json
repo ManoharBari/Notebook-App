@@ -8,21 +8,8 @@
   ],
   "routes": [
     {
-      "src": "/auth/(.*)",
-      "dest": "./index.js",
-      "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
-    },
-    {
-      "src": "/notes/(.*)",
-      "dest": "./index.js",
-      "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
-    },
-    {
       "src": "/(.*)",
-      "dest": "./",
-      "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+      "dest": "/index.js"
     }
-  ],
-
-  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
+  ]
 }
