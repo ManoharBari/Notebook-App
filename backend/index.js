@@ -10,8 +10,7 @@ connectDB();
 
 app.use(
   cors({
-    origin:
-      "http://localhost:5173/" || "https://notebook-app-gules.vercel.app/",
+    origin: "https://notebook-app-gules.vercel.app",
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
