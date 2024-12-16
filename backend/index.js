@@ -1,10 +1,10 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
-const connectDB = require("../db");
+const connectDB = require("./db");
 const cors = require("cors");
-const auth = require("../routes/auth");
-const notes = require("../routes/notes");
+const auth = require("./routes/auth");
+const notes = require("./routes/notes");
 
 connectDB();
 
@@ -32,5 +32,3 @@ app.get("/", (req, res) => {
 
 //listen function
 app.listen(process.env.PORT, () => {});
-
-module.exports = app; 

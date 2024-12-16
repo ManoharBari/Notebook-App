@@ -1,8 +1,17 @@
 {
   "version": 2,
   "routes": [
-    { 
-      "src": "/(.*)", "dest": "/api/handler.js" 
+    {
+      "src": "/(.*)",
+      "dest": "index.js"
+    },
+    {
+      "src": "auth/(.*)",
+      "dest": "./routes/*.js"
+    },
+    {
+      "src": "notes/(.*)",
+      "dest": "./routes/*.js"
     }
   ]
 }
