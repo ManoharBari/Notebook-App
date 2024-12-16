@@ -46,7 +46,6 @@ router.post(
 
       // generating JWT token for user
       const authtoken = jwt.sign(data, process.env.JWT_SECRET);
-      res.SetHeader("Content-Type", "application/json");
       res.status(200).json({ msg: "Account created successfully", authtoken });
     } catch (error) {
       console.log(error);
