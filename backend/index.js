@@ -15,6 +15,11 @@ app.use(
     credentials: true,
   })
 );
+
+app.get("/auth/signup", (req, res) => {
+  res.send("I am Working");
+});
+
 app.options("*", cors());
 app.use(express.json());
 app.use("/auth", auth);

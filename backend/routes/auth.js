@@ -8,10 +8,6 @@ const jwt = require("jsonwebtoken");
 const fetchuser = require("../middleware/fetchuser");
 
 // create user using : POST = api/user - No login required
-router.get("/signup", (req, res) => {
-  res.send(`<h1> I am signup </h1>`);
-});
-
 router.post(
   "/signup",
   [
