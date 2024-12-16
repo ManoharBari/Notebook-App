@@ -16,14 +16,15 @@ app.use(
   })
 );
 
-app.get("/user/signup", (req, res) => {
-  res.send("I am Working");
-});
 
 app.options("*", cors());
 app.use(express.json());
 app.use("/auth", auth);
 app.use("/notes", notes);
+
+app.get("/user/signup", (req, res) => {
+  res.send("I am Working");
+});
 
 app.get("/", (req, res) => {
   res.send("I am Working");
