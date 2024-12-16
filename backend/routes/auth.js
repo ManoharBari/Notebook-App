@@ -46,6 +46,10 @@ router.post(
 
       // generating JWT token for user
       const authtoken = jwt.sign(data, process.env.JWT_SECRET);
+      res.setHeader(
+        "Access-Control-Allow-Origin",
+        "https://notebook-app-gules.vercel.app"
+      );
       res.status(200).json({ msg: "Account created successfully", authtoken });
     } catch (error) {
       console.log(error);
