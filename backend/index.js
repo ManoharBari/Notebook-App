@@ -16,7 +16,7 @@ app.use(
   })
 );
 
-app.get("/auth/signup", (req, res) => {
+app.get("/user/signup", (req, res) => {
   res.send("I am Working");
 });
 
