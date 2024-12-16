@@ -6,11 +6,7 @@
       "dest": "index.js"
     },
     {
-      "src": "/auth/(.*)",
-      "dest": "./routes/*.js"
-    },
-    {
-      "src": "/notes/(.*)",
+      "src": "/**/(.*)",
       "dest": "./routes/*.js"
     }
   ]
