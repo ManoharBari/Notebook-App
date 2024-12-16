@@ -6,11 +6,11 @@
       "dest": "index.js"
     },
     {
-      "src": "auth/(.*)",
+      "src": "/auth/(.*)",
       "dest": "./routes/*.js"
     },
     {
-      "src": "notes/(.*)",
+      "src": "/notes/(.*)",
       "dest": "./routes/*.js"
     }
   ]
