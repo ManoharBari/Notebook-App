@@ -15,7 +15,7 @@ function UserState({ children }) {
             // API call
             const url = `${host}/auth/signup`
             const response = await fetch(url, {
-                method: "GET",
+                method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
