@@ -134,9 +134,9 @@
   font-size: 0.7rem;
 }
 
-
 @media (max-width: 480px) {
-  .sidebar{
+  .sidebar {
     width: 100%;
+    height: calc(80vh - 64px);
   }
 }
