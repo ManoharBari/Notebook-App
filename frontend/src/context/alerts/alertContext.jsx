@@ -16,7 +16,7 @@ function AlertProvider({ children }) {
     return (
         <AlertContext.Provider value={showAlert}>
             {children}
-            <ToastContainer position='top-right' autoClose={2000} />
+            <ToastContainer position='top-right' autoClose={1000} />
         </AlertContext.Provider>
     )
 }
