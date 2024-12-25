@@ -15,7 +15,7 @@ app.use("/auth", auth);
 app.use("/notes", notes);
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.send("Notebook Backend Working!");
 });
 
 module.exports = app;
