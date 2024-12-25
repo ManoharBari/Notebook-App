@@ -14,7 +14,8 @@ connectDB();
 app.use("/auth", auth);
 app.use("/notes", notes);
 
-//listen function
-app.listen(8080, () => {});
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
 
 module.exports = app;
