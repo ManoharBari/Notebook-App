@@ -11,7 +11,6 @@ import { AlertProvider } from './context/alerts/alertContext';
 function App() {
   return (
     <>
-      
       <AlertProvider>
         <Router>
           <NoteProvider >
@@ -26,7 +25,6 @@ function App() {
           </NoteProvider >
         </Router>
       </AlertProvider>
-      
     </>
   )
 }
