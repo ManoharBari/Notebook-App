@@ -6,7 +6,7 @@ import { useAlert } from '../context/alerts/alertContext'
 import UserContext from '../context/user/userContext';
 import '../styles/navbar.css';
 
-function Navbar() {
+function Navbar() {     
     const alert = useAlert()
     const navigate = useNavigate()
     const { getUser, user } = useContext(UserContext)
