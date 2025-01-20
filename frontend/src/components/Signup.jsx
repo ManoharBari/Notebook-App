@@ -66,7 +66,7 @@ function signUp() {
                             required
                         />
                     </div>
-            
+
                     <button type="submit" className="button">
                         <UserPlus size={16} />
                         <span>Sign Up</span>
